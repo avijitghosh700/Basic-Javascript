@@ -476,7 +476,7 @@ const pizza = {
 }
 
 pizza.coupon = 'special30';
-pizza.price = function() {
+pizza.price = function() { 
   return `$${20}`;
 };
 
@@ -523,6 +523,89 @@ function Triangle(radius) {
   '{}' sets the target of 'this' to the constructed Object.
   By deafult the target of 'this' is 'window' (global Object).
 */
-const triangle = Triangle.call({}, 3); //'call' method takes multiple arguments to pass to the contsructor function
+// const triangle = Triangle.call({}, 3); //'call' method takes multiple arguments to pass to the contsructor function
 const triangle = Triangle.apply({}, [3]); //'apply' method takes single array of arguments to pass to the contsructor function
 console.log(triangle);
+
+console.log('\n');
+
+//Ways to iterate over an Object using for..of loop
+const vector = {
+  x: {
+    right: 0,
+    left: 0
+  },
+  y: {
+    top: 0,
+    bottom: 0
+  },
+  z: {
+    inside: 0,
+    outside: 0
+  }
+};
+
+/*
+  Object.keys() method returns an Array 
+  of keys (properties) of the given Object.
+
+  NOTE: 'for (let key of vector) {...}' will not work and through an error.
+  Because Objects are not iteratable.
+*/
+for (let key of Object.keys(vector)) {
+  console.log(key);
+}
+
+/*
+  Object.entries() method returns an Array
+  of keys-value pair of the given Object.
+*/
+for (let key of Object.entries(vector)) {
+  console.log(key);
+}
+
+//'in' Operator 
+/* 
+  It confirms the existence of the property in
+  an Object.
+*/
+if ('x' in vector)
+  console.log(vector.x);
+else
+  console.log('Not Found');
+
+console.log('\n');
+
+//Cloning an Object
+//Old way -->
+// const anotherVector = {};
+
+// for (let key in vector) {
+//   anotherVector[key] = vector[key];
+// }
+
+// console.log(anotherVector);
+
+//Modern way -->
+/*
+'Object.assign()' method takes a empty Object or an existing non-empty object as its first parameter.
+In this Object (First parameter), the assignment of key-value pair will happen.
+After the first parameter, Object(s) from where the key-value pair will be copied are placed.
+Multiple Objects can be added for copying key-value pair.
+
+NOTE: If no Objects are predefined, then using '{}' as first parameter will create an empty Object.
+*/
+// const anotherVector = Object.assign({}, vector);
+// console.log(anotherVector);
+
+//Modern and efficient way -->
+
+// Spread Operator
+/*
+'...' it spreads the value of an Array or key-value of an Object accordingly in the respecred place.
+-> An Array of values can be shared accordingly between a function's parameters.
+-> For copying an Object to another. Example below -->
+*/
+const anotehrVector = { ...vector };
+console.log(anotehrVector);
+console.log('\n');
