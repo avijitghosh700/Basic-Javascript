@@ -489,10 +489,10 @@ console.log('\n');
 //JavaScript engine interpret const obj = {}; using this syntax
 const Obj = new Object(); //This is the Constructor Property for creating Objects
 
-//Similarly JavaScript uses those internally to create
-new String(); //For "", '', `` to create string values
-new Boolean(); //For True/False to create boolean values
-new Number(); //For 1, 2, 2.5 to create number values
+//JavaScript has other built-in constructor to create
+new String();
+new Boolean();
+new Number();
 new Function(); //funtions are Objects too
 
 //function constructor
@@ -558,7 +558,7 @@ for (let key of Object.keys(vector)) {
 
 /*
   Object.entries() method returns an Array
-  of keys-value pair of the given Object.
+  of key-value pair of the given Object.
 */
 for (let key of Object.entries(vector)) {
   console.log(key);
@@ -609,3 +609,9 @@ NOTE: If no Objects are predefined, then using '{}' as first parameter will crea
 const anotehrVector = { ...vector };
 console.log(anotehrVector);
 console.log('\n');
+
+//Date() constructor
+let date = new Date();
+date.setFullYear(2018); //To set full year value.
+let isoDate = date.toISOString(); //ISO format date. Useful to send date information to Backend.
+console.log(isoDate);
