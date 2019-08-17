@@ -523,8 +523,8 @@ function Triangle(radius) {
   '{}' sets the target of 'this' to the constructed Object.
   By deafult the target of 'this' is 'window' (global Object).
 */
-// const triangle = Triangle.call({}, 3); //'call' method takes multiple arguments to pass to the contsructor function
-const triangle = Triangle.apply({}, [3]); //'apply' method takes single array of arguments to pass to the contsructor function
+// const triangle = Triangle.call({}, 3); //'call' method takes multiple arguments to pass to the contsructor function.
+const triangle = Triangle.apply({}, [3]); //'apply' method takes single array of arguments to pass to the contsructor function.
 console.log(triangle);
 
 console.log('\n');
@@ -615,3 +615,74 @@ let date = new Date();
 date.setFullYear(2018); //To set full year value.
 let isoDate = date.toISOString(); //ISO format date. Useful to send date information to Backend.
 console.log(isoDate);
+console.log('\n');
+
+//------------------ Arrays ------------------//
+
+const myArr = [];
+
+myArr.unshift(1, 2); //To insert element(s) to the start (Left side) of an Array.
+myArr.push(3, 4, 2); //To insert element(s) to the end (Right side) of an Array.
+
+/*
+  To insert element(s) to a specific position of an Array.
+  The second parameter assigns how many element(s) to be removed form
+  the Array.
+*/
+myArr.splice(5, 0, 5, 6);
+
+console.log(myArr);
+console.log('\n');
+
+/* 
+  All of them takes an optional parameter, which assigns, from
+  where the search for the element will begin.
+*/
+console.log(`${myArr.indexOf(2, 2)}: indexOf()`); //Returns the index of the given element of an Array.
+console.log(`${myArr.lastIndexOf(2)}: lastIndexOf()\n`); //Returns the last index of the duplicate element of an Array.
+
+/*
+  To check if the element (Primitive Types) is present in the Array
+*/
+console.log(myArr.indexOf(4) !== -1);
+console.log(myArr.includes(4)); //Modern and efficient way of the same task.
+
+/*
+  To check if the element (Reference Types) is present in the Array
+*/
+const users = [
+  { name: 'Avijit', ID: 123 },
+  { name: 'Falguni', ID: 124 }
+];
+
+/*
+  find() method is used to filter/find Reference Type element(s) in an Array.
+*/
+const user = users.find(function(user) {
+  return user.name === 'Falguni';
+});
+
+/*
+  findIndex() method is used to filter/find index of Reference Type element(s) in an Array.
+*/
+const userIndex = users.findIndex(function (user) {
+  return user.name === 'Priyanka';
+});
+
+console.log(user);
+console.log(`\n${userIndex}\n`);
+
+//Arrow function expression
+/*
+  It is a syntactically cleaner and compact alternative to
+  regular function expression. However, without its own bindings to the 'this', 'arguments', 
+  'super', or 'new.target' keywords. Arrow function expressions are ill suited as methods, 
+  and they cannot be used as constructors.
+
+  * When only one parameter are there, we can remove the sorrounding parentheses 
+  of the parameter.
+  * When only statement 'return' is used, we can remove it and sorrounding curly braces as well.
+*/
+const userMe = users.find(user => user.name === 'Avijit');
+
+console.log(userMe);
